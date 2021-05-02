@@ -4,6 +4,7 @@ import { addSmurf, setError } from '../actions';
 
 const AddForm = (props) => {
     const [state, setState] = useState({
+        id: Math.random(),
         name:"",
         position:"",
         nickname:"",
@@ -21,11 +22,11 @@ const AddForm = (props) => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
             props.setError("Name, position and nickname fields are required.");
+        } else {
+            props.addSmurf(state)
         }
-        props.addSmurf(state)
+        
     }
-
-    const errorMessage = "";
 
     return(<section>
         <h2>Add Smurf</h2>
